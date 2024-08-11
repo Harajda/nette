@@ -1,0 +1,33 @@
+# config/common.neon
+
+parameters:
+    # Definice parametrů, pokud jsou potřeba
+
+application:
+    
+    errorPresenter:
+        4xx: Error:Error404
+        5xx: Error:Error500
+    mapping: App\UI\*\**Presenter
+
+database:
+    dsn: 'mysql:host=db;dbname=nette_db'
+    user: 'nette_user'
+    password: 'secret'
+
+latte:
+    strictTypes: yes
+    strictParsing: yes
+    extensions:
+        - App\UI\Accessory\LatteExtension
+
+di:
+    export:
+        parameters: no
+        tags: no
+
+search:
+    - in: %appDir%
+      classes:
+        - *Factory
+        - *Facade

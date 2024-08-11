@@ -1,0 +1,52 @@
+{block content}
+
+<h1>Results</h1>
+
+<!-- Formulář pro filtrování -->
+<form action="{link filter}" method="get">
+    <input type="text" name="name" placeholder="Filter by name" value="{$filter['name'] ?? ''}" />
+    <button type="submit">Filter</button>
+</form>
+
+<!-- Možnosti řazení -->
+<form action="{link sort}" method="get">
+    <select name="sort" onchange="this.form.submit()">
+        <option value="name" {if $sort == 'name'}selected{/if}>Sort by Name</option>
+        <option value="comments" {if $sort == 'comments'}selected{/if}>Sort by Comments</option>
+        <option value="interests" {if $sort == 'interests'}selected{/if}>Sort by Interests</option>
+    </select>
+</form>
+
+<!-- Tabulka s výsledky -->
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Interests</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $data as $row}
+        <tr style="padding:5px; margin:5px;background-color:#f2f2f2">
+            <td>{$row->name}</td>
+            <td>{$row->comments}</td>
+            <td>{$row->interests}</td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+
+<!-- Stránkování -->
+<div>
+    {if $page > 1}
+        <a n:href="Result:default $prevPage">Previous</a>
+    {/if}
+    {if $page < $totalPages}
+        <a n:href="Result:default $nextPage">Next</a>
+    {/if}
+</div>
+
+
+
+{/block}

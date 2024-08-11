@@ -1,0 +1,8 @@
+#config/services.neon
+
+services:
+    - App\Core\RouterFactory::createRouter
+    - App\Model\SurveyRepository
+
+#routing:
+#    - App\Core\RouterFactory::createRouter

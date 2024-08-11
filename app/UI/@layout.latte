@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{block title}My App{/block}</title>
+</head>
+<body>
+	<header><div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div></header>
+	<main>{include content}</main>
+	<footer></footer>
+</body>
+</html>
