@@ -1,52 +1,26 @@
-Nette Web Project
-=================
+Vytvoril som si cez PHPMYADMIN tabuľku SQL príkazom:
+CREATE TABLE survey_responses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    comments TEXT,
+    terms_accepted BOOLEAN NOT NULL,
+    interests TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-Welcome to the Nette Web Project! This is a basic skeleton application built using
-[Nette](https://nette.org), ideal for kick-starting your new web projects.
+Tabuľku som napĺňal manuálne.
 
-Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
-robust security, and outstanding performance. It's among the safest choices
-for PHP frameworks out there.
-
-If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
-Thank you for your generosity!
-
-
-Requirements
-------------
-
-This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
-
-
-Installation
-------------
-
-To install the Web Project, Composer is the recommended tool. If you're new to Composer,
-follow [these instructions](https://doc.nette.org/composer). Then, run:
-
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
-
-Ensure the `temp/` and `log/` directories are writable.
+Dostupné routy sú:
+/survey
+/results +stránkovanie
+![image](https://github.com/user-attachments/assets/77fc1378-c8a3-4755-b9f5-b135bc2da5bc)
+![image](https://github.com/user-attachments/assets/7b639242-3a4e-4cdd-923f-91c78cfb276d)
+![image](https://github.com/user-attachments/assets/6b410b70-d2b2-4287-bd61-0c500923f95b)
 
 
-Web Server Setup
-----------------
+v "common.neon" a vo file "SurveyRepositoryTest.phpt" som nastavil hodnoty pre spojenie s Databázou
 
-To quickly dive in, use PHP's built-in server:
+v "Bootstrap.php" $configurator->setDebugMode(true);  - na prode samozrejme vypnúť
 
-	php -S localhost:8000 -t www
-
-Then, open `http://localhost:8000` in your browser to view the welcome page.
-
-For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
-
-**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
-Refer to [security warning](https://nette.org/security-warning) for more details.
-
-
-Minimal Skeleton
-----------------
-
-For demonstrating issues or similar tasks, rather than starting a new project, use
-this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
+Test som spustil cez príkaz:vendor/bin/tester tests/SurveyRepositoryTest.phpt
+![image](https://github.com/user-attachments/assets/26a19ca6-06d1-4524-8742-8ca1ee3dfb47)
